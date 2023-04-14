@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Test Report</title>
+    <meta name="generator" content="BSTestRunner 0.8.4"/>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    
+<style type="text/css" media="screen">
+
+/* -- css div popup ------------------------------------------------------------------------ */
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #99CCFF;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 10pt;
+    width: 500px;
+}
+
+/* -- report ------------------------------------------------------------------------ */
+
+#show_detail_line .label {
+    font-size: 85%;
+    cursor: pointer;
+}
+
+#show_detail_line {
+    margin: 2em auto 1em auto;
+}
+
+#total_row  { font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+</style>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class="container">
+    <div class='heading'>
+<h1>Test Report</h1>
+<p><strong>Start Time:</strong> 2023-04-11 20:26:08</p>
+<p><strong>Duration:</strong> 0:01:08.173336</p>
+<p><strong>Status:</strong> <span class="text text-success">Pass <strong>6</strong></span></p>
+
+<p class='description'>login test</p>
+</div>
+
+
+    
+<p id='show_detail_line'>
+<span class="label label-primary" onclick="showCase(0)">Summary</span>
+<span class="label label-danger" onclick="showCase(1)">Failed</span>
+<span class="label label-default" onclick="showCase(2)">All</span>
+</p>
+<table id='result_table' class="table">
+    <thead>
+        <tr id='header_row'>
+            <th>Test Group/Test case</td>
+            <th>Count</td>
+            <th>Pass</td>
+            <th>Fail</td>
+            <th>Error</td>
+            <th>View</td>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr class='text text-success'>
+    <td>test_computer_office.TestComputerOffice</td>
+    <td>6</td>
+    <td>6</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c1',6)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_excel_base</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: /Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['Excel2019视频教程', 'WPS2019视频教程（表格篇）', 'Excel常见问题100例教程', '二级MS Office考试教程2021', 'Excel2016基础视频教程', 'Excel2013视频教程', 'WPS2013表格教程', '二级MS Office考试教程', 'Excel2010基础教程', 'Excel 2003视频教程', '计算机等级考试（一级MS Office教程）']
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_excel_progress</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+        pass</a>
+
+    <div id='div_pt1.2' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.2: /Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['Excel2019视频教程', 'WPS2019视频教程（表格篇）', 'Excel常见问题100例教程', '二级MS Office考试教程2021', 'Excel2016基础视频教程', 'Excel2013视频教程', 'WPS2013表格教程', '二级MS Office考试教程', 'Excel2010基础教程', 'Excel 2003视频教程', '计算机等级考试（一级MS Office教程）']
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['Excel图表制作教程2023', 'Power Query基础到进阶教程', 'Office365 Excel函数教程', 'Excel数据分析综合教程', 'Excel数据处理利器--M语言教程', 'Power BI商业智能分析教程--数据清洗', 'Power BI商业智能分析教程--数据分析', 'Power BI商业智能分析教程--数据可视化', '当Excel遇到Python教程', 'Python数据分析神器Pandas教程', 'Excel实战技巧教程', 'Excel2013数据透视表教程', 'Excel2013函数大全教程', 'Excel函数应用教程', 'Excel数据透视表教程', 'Excel操作技巧教程', 'Excel超级透视表（Power Pivot-DAX）教程']
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_ppt</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+        pass</a>
+
+    <div id='div_pt1.3' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.3: /Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['Excel2019视频教程', 'WPS2019视频教程（表格篇）', 'Excel常见问题100例教程', '二级MS Office考试教程2021', 'Excel2016基础视频教程', 'Excel2013视频教程', 'WPS2013表格教程', '二级MS Office考试教程', 'Excel2010基础教程', 'Excel 2003视频教程', '计算机等级考试（一级MS Office教程）']
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['Excel图表制作教程2023', 'Power Query基础到进阶教程', 'Office365 Excel函数教程', 'Excel数据分析综合教程', 'Excel数据处理利器--M语言教程', 'Power BI商业智能分析教程--数据清洗', 'Power BI商业智能分析教程--数据分析', 'Power BI商业智能分析教程--数据可视化', '当Excel遇到Python教程', 'Python数据分析神器Pandas教程', 'Excel实战技巧教程', 'Excel2013数据透视表教程', 'Excel2013函数大全教程', 'Excel函数应用教程', 'Excel数据透视表教程', 'Excel操作技巧教程', 'Excel超级透视表（Power Pivot-DAX）教程']
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['PPT2019视频教程', 'WPS2019视频教程（演示篇）', '二级MS Office考试教程2021', 'PPT2016基础视频教程', 'PowerPoint2013视频教程', 'WPS2013演示教程', '二级MS Office考试教程', 'PPT2010基础教程', 'PPT2003视频教程', '计算机等级考试（一级MS Office教程）']
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_type_rank_combined</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
+        pass</a>
+
+    <div id='div_pt1.4' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.4: /Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['Excel2019视频教程', 'WPS2019视频教程（表格篇）', 'Excel常见问题100例教程', '二级MS Office考试教程2021', 'Excel2016基础视频教程', 'Excel2013视频教程', 'WPS2013表格教程', '二级MS Office考试教程', 'Excel2010基础教程', 'Excel 2003视频教程', '计算机等级考试（一级MS Office教程）']
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['Excel图表制作教程2023', 'Power Query基础到进阶教程', 'Office365 Excel函数教程', 'Excel数据分析综合教程', 'Excel数据处理利器--M语言教程', 'Power BI商业智能分析教程--数据清洗', 'Power BI商业智能分析教程--数据分析', 'Power BI商业智能分析教程--数据可视化', '当Excel遇到Python教程', 'Python数据分析神器Pandas教程', 'Excel实战技巧教程', 'Excel2013数据透视表教程', 'Excel2013函数大全教程', 'Excel函数应用教程', 'Excel数据透视表教程', 'Excel操作技巧教程', 'Excel超级透视表（Power Pivot-DAX）教程']
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['PPT2019视频教程', 'WPS2019视频教程（演示篇）', '二级MS Office考试教程2021', 'PPT2016基础视频教程', 'PowerPoint2013视频教程', 'WPS2013演示教程', '二级MS Office考试教程', 'PPT2010基础教程', 'PPT2003视频教程', '计算机等级考试（一级MS Office教程）']
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['电脑新手入门教程', 'Word2019视频教程', 'Excel2019视频教程', 'PPT2019视频教程', '电脑打字完全教程', 'WPS2019视频教程（文字篇）', 'WPS2019视频教程（表格篇）', 'Word2016基础视频教程', 'Excel2016基础视频教程', 'Word2013视频教程', 'Excel2013视频教程', 'WIN7视频教程', 'Win8应用视频教程', '五笔打字视频教程', '计算机基础知识教程']
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_type_rank_sort_combined_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.5')" >
+        pass</a>
+
+    <div id='div_pt1.5' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.5: /Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['Excel2019视频教程', 'WPS2019视频教程（表格篇）', 'Excel常见问题100例教程', '二级MS Office考试教程2021', 'Excel2016基础视频教程', 'Excel2013视频教程', 'WPS2013表格教程', '二级MS Office考试教程', 'Excel2010基础教程', 'Excel 2003视频教程', '计算机等级考试（一级MS Office教程）']
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['Excel图表制作教程2023', 'Power Query基础到进阶教程', 'Office365 Excel函数教程', 'Excel数据分析综合教程', 'Excel数据处理利器--M语言教程', 'Power BI商业智能分析教程--数据清洗', 'Power BI商业智能分析教程--数据分析', 'Power BI商业智能分析教程--数据可视化', '当Excel遇到Python教程', 'Python数据分析神器Pandas教程', 'Excel实战技巧教程', 'Excel2013数据透视表教程', 'Excel2013函数大全教程', 'Excel函数应用教程', 'Excel数据透视表教程', 'Excel操作技巧教程', 'Excel超级透视表（Power Pivot-DAX）教程']
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['PPT2019视频教程', 'WPS2019视频教程（演示篇）', '二级MS Office考试教程2021', 'PPT2016基础视频教程', 'PowerPoint2013视频教程', 'WPS2013演示教程', '二级MS Office考试教程', 'PPT2010基础教程', 'PPT2003视频教程', '计算机等级考试（一级MS Office教程）']
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['电脑新手入门教程', 'Word2019视频教程', 'Excel2019视频教程', 'PPT2019视频教程', '电脑打字完全教程', 'WPS2019视频教程（文字篇）', 'WPS2019视频教程（表格篇）', 'Word2016基础视频教程', 'Excel2016基础视频教程', 'Word2013视频教程', 'Excel2013视频教程', 'WIN7视频教程', 'Win8应用视频教程', '五笔打字视频教程', '计算机基础知识教程']
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['Word2019视频教程', 'WPS2019视频教程（文字篇）', 'Word VBA入门到精通教程', '二级MS Office考试教程2021', 'Word2016基础视频教程', 'Word2013视频教程', 'WPS2013文字教程', '二级MS Office考试教程', 'Word2010基础教程', 'Word 2003视频教程', '计算机等级考试（一级MS Office教程）']
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_wps</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.6')" >
+        pass</a>
+
+    <div id='div_pt1.6' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.6: /Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['Excel2019视频教程', 'WPS2019视频教程（表格篇）', 'Excel常见问题100例教程', '二级MS Office考试教程2021', 'Excel2016基础视频教程', 'Excel2013视频教程', 'WPS2013表格教程', '二级MS Office考试教程', 'Excel2010基础教程', 'Excel 2003视频教程', '计算机等级考试（一级MS Office教程）']
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['Excel图表制作教程2023', 'Power Query基础到进阶教程', 'Office365 Excel函数教程', 'Excel数据分析综合教程', 'Excel数据处理利器--M语言教程', 'Power BI商业智能分析教程--数据清洗', 'Power BI商业智能分析教程--数据分析', 'Power BI商业智能分析教程--数据可视化', '当Excel遇到Python教程', 'Python数据分析神器Pandas教程', 'Excel实战技巧教程', 'Excel2013数据透视表教程', 'Excel2013函数大全教程', 'Excel函数应用教程', 'Excel数据透视表教程', 'Excel操作技巧教程', 'Excel超级透视表（Power Pivot-DAX）教程']
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['PPT2019视频教程', 'WPS2019视频教程（演示篇）', '二级MS Office考试教程2021', 'PPT2016基础视频教程', 'PowerPoint2013视频教程', 'WPS2013演示教程', '二级MS Office考试教程', 'PPT2010基础教程', 'PPT2003视频教程', '计算机等级考试（一级MS Office教程）']
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['电脑新手入门教程', 'Word2019视频教程', 'Excel2019视频教程', 'PPT2019视频教程', '电脑打字完全教程', 'WPS2019视频教程（文字篇）', 'WPS2019视频教程（表格篇）', 'Word2016基础视频教程', 'Excel2016基础视频教程', 'Word2013视频教程', 'Excel2013视频教程', 'WIN7视频教程', 'Win8应用视频教程', '五笔打字视频教程', '计算机基础知识教程']
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['Word2019视频教程', 'WPS2019视频教程（文字篇）', 'Word VBA入门到精通教程', '二级MS Office考试教程2021', 'Word2016基础视频教程', 'Word2013视频教程', 'WPS2013文字教程', '二级MS Office考试教程', 'Word2010基础教程', 'Word 2003视频教程', '计算机等级考试（一级MS Office教程）']
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+['WPS2019视频教程（文字篇）', 'WPS2019视频教程（表格篇）', 'WPS2019视频教程（演示篇）', 'WPS JS宏编程教程', 'WPS2013文字教程', 'WPS2013表格教程', 'WPS2013演示教程']
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    </tbody>
+    <tfoot>
+        <tr id='total_row'>
+            <td>Total</td>
+            <td>6</td>
+            <td class="text text-success">6</td>
+            <td class="text text-danger">0</td>
+            <td class="text text-warning">0</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tfoot>
+</table>
+
+    <div id='ending'>&nbsp;</div>
+</div>
+
+</body>
+</html>

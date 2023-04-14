@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Test Report</title>
+    <meta name="generator" content="BSTestRunner 0.8.4"/>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    
+<style type="text/css" media="screen">
+
+/* -- css div popup ------------------------------------------------------------------------ */
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #99CCFF;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 10pt;
+    width: 500px;
+}
+
+/* -- report ------------------------------------------------------------------------ */
+
+#show_detail_line .label {
+    font-size: 85%;
+    cursor: pointer;
+}
+
+#show_detail_line {
+    margin: 2em auto 1em auto;
+}
+
+#total_row  { font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+</style>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class="container">
+    <div class='heading'>
+<h1>Test Report</h1>
+<p><strong>Start Time:</strong> 2023-04-12 17:41:37</p>
+<p><strong>Duration:</strong> 0:02:42.869301</p>
+<p><strong>Status:</strong> <span class="text text-success">Pass <strong>4</strong></span> <span class="text text-warning">Error <strong>2</strong></span></p>
+
+<p class='description'>login test</p>
+</div>
+
+
+    
+<p id='show_detail_line'>
+<span class="label label-primary" onclick="showCase(0)">Summary</span>
+<span class="label label-danger" onclick="showCase(1)">Failed</span>
+<span class="label label-default" onclick="showCase(2)">All</span>
+</p>
+<table id='result_table' class="table">
+    <thead>
+        <tr id='header_row'>
+            <th>Test Group/Test case</td>
+            <th>Count</td>
+            <th>Pass</td>
+            <th>Fail</td>
+            <th>Error</td>
+            <th>View</td>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr class='text text-warning'>
+    <td>test_program_development.TestProgramDevelopment</td>
+    <td>6</td>
+    <td>4</td>
+    <td>0</td>
+    <td>2</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c1',6)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_python_section_3_20</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: /Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.2' class='text text-success'>
+    <td class='text text-warning'><div class='testcase'>test_python_section_3_21</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
+        error</a>
+
+    <div id='div_ft1.2' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.2: /Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+Traceback (most recent call last):
+  File "/Users/mac/Desktop/pythonProject/UI_auto_test/test_case/test_program_development.py", line 12, in test_python_section_3_21
+    ProgramDevelopment(self.driver).python_section_3_21()
+  File "/Users/mac/Desktop/pythonProject/UI_auto_test/pubilc/pages/business_functions/program_development.py", line 36, in python_section_3_21
+    selenium_auto_cource_element.click()
+  File "/Users/mac/Desktop/pythonProject/UI_auto_test/venv/lib/python3.10/site-packages/selenium/webdriver/remote/webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Users/mac/Desktop/pythonProject/UI_auto_test/venv/lib/python3.10/site-packages/selenium/webdriver/remote/webelement.py", line 404, in _execute
+    return self._parent.execute(command, params)
+  File "/Users/mac/Desktop/pythonProject/UI_auto_test/venv/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "/Users/mac/Desktop/pythonProject/UI_auto_test/venv/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: element is not attached to the page document
+  (Session info: chrome=112.0.5615.49)
+Stacktrace:
+0   chromedriver                        0x0000000106b5fae8 chromedriver + 4958952
+1   chromedriver                        0x0000000106b577b3 chromedriver + 4925363
+2   chromedriver                        0x00000001067191d6 chromedriver + 475606
+3   chromedriver                        0x000000010671d274 chromedriver + 492148
+4   chromedriver                        0x000000010671ce56 chromedriver + 491094
+5   chromedriver                        0x000000010671d2fc chromedriver + 492284
+6   chromedriver                        0x000000010675ee29 chromedriver + 761385
+7   chromedriver                        0x000000010674f181 chromedriver + 696705
+8   chromedriver                        0x0000000106782c12 chromedriver + 908306
+9   chromedriver                        0x000000010674e8f1 chromedriver + 694513
+10  chromedriver                        0x0000000106782dce chromedriver + 908750
+11  chromedriver                        0x000000010679e25b chromedriver + 1020507
+12  chromedriver                        0x00000001067829e3 chromedriver + 907747
+13  chromedriver                        0x000000010674caef chromedriver + 686831
+14  chromedriver                        0x000000010674e00e chromedriver + 692238
+15  chromedriver                        0x0000000106b1b9ad chromedriver + 4680109
+16  chromedriver                        0x0000000106b20c12 chromedriver + 4701202
+17  chromedriver                        0x0000000106b2779f chromedriver + 4728735
+18  chromedriver                        0x0000000106b21b7a chromedriver + 4705146
+19  chromedriver                        0x0000000106af427e chromedriver + 4518526
+20  chromedriver                        0x0000000106b41908 chromedriver + 4835592
+21  chromedriver                        0x0000000106b41a87 chromedriver + 4835975
+22  chromedriver                        0x0000000106b5100f chromedriver + 4898831
+23  libsystem_pthread.dylib             0x00007ff811d6b259 _pthread_start + 125
+24  libsystem_pthread.dylib             0x00007ff811d66c7b thread_start + 15
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_python_section_3_22</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+        pass</a>
+
+    <div id='div_pt1.3' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.3: /Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.4' class='text text-success'>
+    <td class='text text-warning'><div class='testcase'>test_python_section_3_23</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.4')" >
+        error</a>
+
+    <div id='div_ft1.4' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.4: /Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+Traceback (most recent call last):
+  File "/Users/mac/Desktop/pythonProject/UI_auto_test/test_case/test_program_development.py", line 18, in test_python_section_3_23
+    ProgramDevelopment(self.driver).python_section_3_23()
+  File "/Users/mac/Desktop/pythonProject/UI_auto_test/pubilc/pages/business_functions/program_development.py", line 71, in python_section_3_23
+    selenium_auto_cource_element.click()
+  File "/Users/mac/Desktop/pythonProject/UI_auto_test/venv/lib/python3.10/site-packages/selenium/webdriver/remote/webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Users/mac/Desktop/pythonProject/UI_auto_test/venv/lib/python3.10/site-packages/selenium/webdriver/remote/webelement.py", line 404, in _execute
+    return self._parent.execute(command, params)
+  File "/Users/mac/Desktop/pythonProject/UI_auto_test/venv/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "/Users/mac/Desktop/pythonProject/UI_auto_test/venv/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: element is not attached to the page document
+  (Session info: chrome=112.0.5615.49)
+Stacktrace:
+0   chromedriver                        0x000000010992aae8 chromedriver + 4958952
+1   chromedriver                        0x00000001099227b3 chromedriver + 4925363
+2   chromedriver                        0x00000001094e41d6 chromedriver + 475606
+3   chromedriver                        0x00000001094e8274 chromedriver + 492148
+4   chromedriver                        0x00000001094e7e56 chromedriver + 491094
+5   chromedriver                        0x00000001094e82fc chromedriver + 492284
+6   chromedriver                        0x0000000109529e29 chromedriver + 761385
+7   chromedriver                        0x000000010951a181 chromedriver + 696705
+8   chromedriver                        0x000000010954dc12 chromedriver + 908306
+9   chromedriver                        0x00000001095198f1 chromedriver + 694513
+10  chromedriver                        0x000000010954ddce chromedriver + 908750
+11  chromedriver                        0x000000010956925b chromedriver + 1020507
+12  chromedriver                        0x000000010954d9e3 chromedriver + 907747
+13  chromedriver                        0x0000000109517aef chromedriver + 686831
+14  chromedriver                        0x000000010951900e chromedriver + 692238
+15  chromedriver                        0x00000001098e69ad chromedriver + 4680109
+16  chromedriver                        0x00000001098ebc12 chromedriver + 4701202
+17  chromedriver                        0x00000001098f279f chromedriver + 4728735
+18  chromedriver                        0x00000001098ecb7a chromedriver + 4705146
+19  chromedriver                        0x00000001098bf27e chromedriver + 4518526
+20  chromedriver                        0x000000010990c908 chromedriver + 4835592
+21  chromedriver                        0x000000010990ca87 chromedriver + 4835975
+22  chromedriver                        0x000000010991c00f chromedriver + 4898831
+23  libsystem_pthread.dylib             0x00007ff811d6b259 _pthread_start + 125
+24  libsystem_pthread.dylib             0x00007ff811d66c7b thread_start + 15
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_python_section_3_24</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.5')" >
+        pass</a>
+
+    <div id='div_pt1.5' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.5: /Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_python_section_3_25</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.6')" >
+        pass</a>
+
+    <div id='div_pt1.6' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.6: /Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+/Users/mac/Desktop/pythonProject/UI_auto_test/config/test_environment_address.xlsx
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    </tbody>
+    <tfoot>
+        <tr id='total_row'>
+            <td>Total</td>
+            <td>6</td>
+            <td class="text text-success">4</td>
+            <td class="text text-danger">0</td>
+            <td class="text text-warning">2</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tfoot>
+</table>
+
+    <div id='ending'>&nbsp;</div>
+</div>
+
+</body>
+</html>

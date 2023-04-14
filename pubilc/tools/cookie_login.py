@@ -1,0 +1,26 @@
+from selenium import webdriver
+from time import sleep
+from pubilc.pages.business_functions.Base import Base
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from config.driver import browser
+from selenium.webdriver.common.by import By
+
+from pubilc.pages.page_elements.home_page import HomePage
+
+
+class CookieLogin(Base,HomePage):
+    def cookieLogin(self):
+        #driver = browser()
+        # driver.maximize_window()
+        self.driver.add_cookie({"name":"newsMember","value":"4Ih6VNjKGSNvY2cDyp4NI6yQYZCG9gLrxx1PeYPF8OTW1NHWAp0EKY7eVpJTN3uPWiBV5PRVl7AhKH6vShNb2Q1cCN/FQsiQPXy6iGqVF6w="})
+        self.driver.refresh()
+        WebDriverWait(self.driver,20,1).until(EC.presence_of_element_located((By.CLASS_NAME,self.user_name_loc)))
+        #sleep(10)
+
+
+if __name__ == '__main__':
+    driver = browser()
+    CookieLogin(driver).cookieLogin()
+
+
