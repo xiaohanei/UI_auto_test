@@ -1,9 +1,9 @@
-# import os
-# import sys
-# # 获取根目录
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# # 将根目录添加到path中
-# sys.path.append(BASE_DIR)
+import os
+import sys
+# 获取根目录
+BASE_DIR = "/Users/mac/Desktop/pythonProject/UI_auto_test"
+# 将根目录添加到path中
+sys.path.append(BASE_DIR)
 
 class ProgramDevelopmentPage():
     #"类型"下面的python
