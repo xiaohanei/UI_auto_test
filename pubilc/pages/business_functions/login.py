@@ -5,6 +5,12 @@ from pubilc.pages.page_elements.login_page import LoginPage
 from selenium.common.exceptions import NoSuchElementException
 from pubilc.tools.read_file import ReadFile
 import time
+import os
+import sys
+# 获取根目录
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 将根目录添加到path中
+sys.path.append(BASE_DIR)
 class Login(Base,LoginPage):
     test_datas = ReadFile().read_excel_include_header("UI_auto_test", "data/test_data.csv", '登录')
     #登录成功

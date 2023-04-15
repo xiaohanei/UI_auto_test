@@ -2,6 +2,12 @@ from selenium import webdriver
 from pubilc.tools.read_file import ReadFile
 import re
 from selenium.webdriver.chrome.options import Options
+import os
+import sys
+# 获取根目录
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 将根目录添加到path中
+sys.path.append(BASE_DIR)
 
 def browser():
     # chrome_options = Options()

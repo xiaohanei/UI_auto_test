@@ -5,6 +5,12 @@ from pubilc.pages.business_functions.Base import Base
 from selenium.common.exceptions import NoSuchElementException,StaleElementReferenceException
 from selenium.webdriver.common.by import By
 import time
+import os
+import sys
+# 获取根目录
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 将根目录添加到path中
+sys.path.append(BASE_DIR)
 
 class ComputerOffice(Base,ComputerOfficePage,HomePage):
     def computer_primary(self):

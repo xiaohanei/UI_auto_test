@@ -1,5 +1,10 @@
 
-
+# import os
+# import sys
+# # 获取根目录
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# # 将根目录添加到path中
+# sys.path.append(BASE_DIR)
 class ComputerOfficePage():
 
     #电脑办公页面"类型"下面各种选项的元素定位，通过超链接文本定位

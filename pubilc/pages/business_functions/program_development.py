@@ -9,6 +9,12 @@ from pubilc.pages.page_elements.home_page import HomePage
 from pubilc.pages.business_functions.login import Login
 from pubilc.tools.mouse_action import MouseAction
 from pubilc.tools.cookie_login import CookieLogin
+import os
+import sys
+# 获取根目录
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 将根目录添加到path中
+sys.path.append(BASE_DIR)
 class ProgramDevelopment(Base,ProgramDevelopmentPage,HomePage):
     def python_section_3_20(self):
         CookieLogin(self.driver).cookieLogin()

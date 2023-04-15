@@ -7,6 +7,12 @@ from config.driver import browser
 from selenium.webdriver.common.by import By
 
 from pubilc.pages.page_elements.home_page import HomePage
+import os
+import sys
+# 获取根目录
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 将根目录添加到path中
+sys.path.append(BASE_DIR)
 
 
 class CookieLogin(Base,HomePage):

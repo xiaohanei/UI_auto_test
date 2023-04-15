@@ -3,6 +3,12 @@ from test_case.myunit import StartEnd
 from pubilc.pages.business_functions.program_development import ProgramDevelopment
 from pubilc.pages.page_elements.program_development_page import ProgramDevelopmentPage
 from selenium.webdriver.common.by import By
+import os
+import sys
+# 获取根目录
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 将根目录添加到path中
+sys.path.append(BASE_DIR)
 
 class TestProgramDevelopment(StartEnd,ProgramDevelopmentPage):
     def test_python_section_3_20(self):

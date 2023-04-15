@@ -3,6 +3,12 @@ from pubilc.pages.business_functions.computer_office import ComputerOffice
 from pubilc.pages.page_elements.computer_office_page import ComputerOfficePage
 from data.expected_computer_office import ExpectedComputerOffice
 from pubilc.tools.get_courses import GetCourses
+import os
+import sys
+# 获取根目录
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 将根目录添加到path中
+sys.path.append(BASE_DIR)
 class TestComputerOffice(StartEnd,ComputerOfficePage,ExpectedComputerOffice):
     def test_computer_primary(self):
         ComputerOffice(self.driver).computer_primary()

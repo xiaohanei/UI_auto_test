@@ -8,6 +8,12 @@ from pubilc.tools.cookie_login import CookieLogin
 from pubilc.tools.mouse_action import MouseAction
 from selenium.common.exceptions import NoSuchElementException,StaleElementReferenceException
 from selenium.webdriver.common.by import By
+import os
+import sys
+# 获取根目录
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 将根目录添加到path中
+sys.path.append(BASE_DIR)
 class UserCenter(Base,HomePage,UserCenterPage):
     def vip_center(self):
         CookieLogin(self.driver).cookieLogin()

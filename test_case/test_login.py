@@ -4,6 +4,12 @@ from pubilc.pages.page_elements.home_page import HomePage
 from selenium.webdriver.common.by import By
 from pubilc.pages.page_elements.login_page import LoginPage
 from pubilc.tools.read_file import ReadFile
+import os
+import sys
+# 获取根目录
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 将根目录添加到path中
+sys.path.append(BASE_DIR)
 class TestLogin(StartEnd,HomePage,LoginPage):
     expected_results = ReadFile().read_excel_not_include_header("UI_auto_test", "data/expected_results.xlsx", '登录')
     #测试登录成功

@@ -1,5 +1,10 @@
 
-
+# import os
+# import sys
+# # 获取根目录
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# # 将根目录添加到path中
+# sys.path.append(BASE_DIR)
 class UserCenterPage():
     #"会员中心"按钮，通过link_text的方式定位
     vip_center_loc = "会员中心"
