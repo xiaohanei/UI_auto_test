@@ -8,6 +8,12 @@ from multiprocessing.pool import ThreadPool
 from BeautifulReport import BeautifulReport
 from pubilc.tools.report_name import now_time
 from BSTestRunner import BSTestRunner
+import os
+import sys
+# 获取根目录
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 将根目录添加到path中
+sys.path.append(BASE_DIR)
 
 test_dir = get_path("UI_auto_test", "test_case")
 discover = unittest.defaultTestLoader.discover(test_dir, pattern='test*.py')
