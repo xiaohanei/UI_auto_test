@@ -1,12 +1,12 @@
 import sys
-sys.path.append("/Users/mac/.jenkins/workspace/UI_auto_test/config")
-sys.path.append("/Users/mac/.jenkins/workspace/UI_auto_test/data")
-sys.path.append("/Users/mac/.jenkins/workspace/UI_auto_test/pubilc/pages/business_functions")
-sys.path.append("/Users/mac/.jenkins/workspace/UI_auto_test/pubilc/pages/page_elements")
-sys.path.append("/Users/mac/.jenkins/workspace/UI_auto_test/pubilc/pages/tools")
-sys.path.append("/Users/mac/.jenkins/workspace/UI_auto_test/reports")
-sys.path.append("/Users/mac/.jenkins/workspace/UI_auto_test/runtest")
-sys.path.append("/Users/mac/.jenkins/workspace/UI_auto_test/test_case")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/config")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/data")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/pubilc/pages/business_functions")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/pubilc/pages/page_elements")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/pubilc/pages/tools")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/reports")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/runtest")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/test_case")
 
 import unittest
 from concurrent.futures.thread import ThreadPoolExecutor
