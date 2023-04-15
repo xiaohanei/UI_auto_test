@@ -11,9 +11,16 @@ from BSTestRunner import BSTestRunner
 import os
 import sys
 # 获取根目录
-BASE_DIR = "/Users/mac/Desktop/pythonProject/UI_auto_test"
+#BASE_DIR = "/Users/mac/Desktop/pythonProject/UI_auto_test"
 # 将根目录添加到path中
-sys.path.append(BASE_DIR)
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/config")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/data")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/pubilc/pages/business_functions")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/pubilc/pages/page_elements")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/pubilc/pages/tools")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/reports")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/runtest")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/test_case")
 
 test_dir = get_path("UI_auto_test", "test_case")
 discover = unittest.defaultTestLoader.discover(test_dir, pattern='test*.py')
