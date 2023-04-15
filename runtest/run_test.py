@@ -1,5 +1,5 @@
 import sys
-sys.path.append("/Users/mac/Desktop/pythonProject")
+sys.path.append("/Users/mac/Desktop/pythonProject/UI_auto_test/venv/lib/python3.10/site-packages")
 
 
 
