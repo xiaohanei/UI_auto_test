@@ -10,6 +10,7 @@ BASE_DIR = "/Users/mac/Desktop/pythonProject/UI_auto_test"
 sys.path.append(BASE_DIR)
 class GetCourses(Base,ComputerOfficePage):
     def get_courses(self):
+        global courses
         attempt = 0
         while attempt <3:
             try:
@@ -18,7 +19,8 @@ class GetCourses(Base,ComputerOfficePage):
                     courses = []
                     for i in range(len(elements)):
                         courses.append(elements[i].text)
-                    return courses
+                    break
+
                 except StaleElementReferenceException as msg:
                     attempt +=1
                     print(msg)
@@ -26,3 +28,5 @@ class GetCourses(Base,ComputerOfficePage):
                 attempt +=1
                 self.driver.refresh()
                 print(msg)
+            finally:
+                return courses

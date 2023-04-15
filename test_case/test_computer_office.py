@@ -61,9 +61,13 @@ class TestComputerOffice(StartEnd,ComputerOfficePage,ExpectedComputerOffice):
     def test_type_rank_combined(self):
         ComputerOffice(self.driver).type_rank_combined()
         courses = GetCourses(self.driver).get_courses()
+        print(courses)
+        print(self.expect_type_rank_combined_courses)
         self.assertEqual(courses, self.expect_type_rank_combined_courses)
 
     def test_type_rank_sort_combined_(self):
         ComputerOffice(self.driver).type_rank_sort_combined()
         courses = GetCourses(self.driver).get_courses()
+        print(courses)
+        print(self.expect_type_rank_sort_combined_courses)
         self.assertEqual(courses, self.expect_type_rank_sort_combined_courses)

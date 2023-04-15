@@ -31,11 +31,9 @@ class ExpectedComputerOffice():
                           'WPS2013文字教程', 'WPS2013表格教程', 'WPS2013演示教程']
 
     #类型：电脑入门    级别：进阶    排序：默认排序
-    expect_type_rank_combined_courses = ['Word2019视频教程', 'Excel2019视频教程', 'WPS2019视频教程（文字篇）', 'Word2013视频教程',
-                                         'Excel2013视频教程']
+    expect_type_rank_combined_courses = ['Word2019视频教程', 'Excel2019视频教程', 'WPS2019视频教程（文字篇）', 'Word2013视频教程','Excel2013视频教程']
 
-    # 类型：ppt    级别：高级    排序：访问量
+    # 类型：excel进阶   级别：高级    排序：访问量
     expect_type_rank_sort_combined_courses = ['Excel2013函数大全教程', 'Excel操作技巧教程', 'Excel函数应用教程', 'Excel数据透视表教程',
-                                              'Excel2013数据透视表教程', 'Power Query基础到进阶教程', 'Office365 Excel函数教程',
-                                              'Excel数据分析综合教程']
+                                              'Excel2013数据透视表教程', 'Power Query基础到进阶教程', 'Office365 Excel函数教程','Excel数据分析综合教程']
 

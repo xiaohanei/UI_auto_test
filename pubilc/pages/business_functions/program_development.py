@@ -45,18 +45,22 @@ class ProgramDevelopment(Base,ProgramDevelopmentPage,HomePage):
         attempt = 0
         while attempt < 3:
             try:
-                self.driver.find_element(By.LINK_TEXT,self.program_development_loc).click()
-                self.driver.find_element(By.LINK_TEXT,self.python_loc).click()
-                selenium_auto_cource_element = MouseAction(self.driver).mouse_hover(By.XPATH,self.selenium_auto_cource_loc)
-                selenium_auto_cource_element.click()
-                self.driver.switch_to.window(self.driver.window_handles[-1])
-                data_page2_element = MouseAction(self.driver).mouse_hover(By.LINK_TEXT,self.data_page2_loc)
-                data_page2_element.click()
-                python_section_3_21_title_element = MouseAction(self.driver).mouse_hover(By.XPATH,self.python_section_3_21_title_loc)
-                python_section_3_21_title_element.click()
-                self.driver.switch_to.window(self.driver.window_handles[-1])
-                break
-            except exceptions as msg:
+                try:
+                    self.driver.find_element(By.LINK_TEXT,self.program_development_loc).click()
+                    self.driver.find_element(By.LINK_TEXT,self.python_loc).click()
+                    selenium_auto_cource_element = MouseAction(self.driver).mouse_hover(By.XPATH,self.selenium_auto_cource_loc)
+                    selenium_auto_cource_element.click()
+                    self.driver.switch_to.window(self.driver.window_handles[-1])
+                    data_page2_element = MouseAction(self.driver).mouse_hover(By.LINK_TEXT,self.data_page2_loc)
+                    data_page2_element.click()
+                    python_section_3_21_title_element = MouseAction(self.driver).mouse_hover(By.XPATH,self.python_section_3_21_title_loc)
+                    python_section_3_21_title_element.click()
+                    self.driver.switch_to.window(self.driver.window_handles[-1])
+                    break
+                except StaleElementReferenceException as msg:
+                    attempt = attempt + 1
+                    print(msg)
+            except NoSuchElementException as msg:
                 attempt = attempt+1
                 self.driver.refresh()
                 print(msg)

@@ -17,6 +17,7 @@ class MouseAction(Base):
                 try:
                     abover = self.driver.find_element(by,loc)
                     ActionChains(self.driver).move_to_element(abover).perform()
+                    break
                 except StaleElementReferenceException as msg:
                     attempt +=1
                     print(msg)
