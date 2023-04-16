@@ -16,11 +16,11 @@ def browser():
     # chrome_options.add_argument('--headless')
     # driver = webdriver.Chrome(chrome_options=chrome_options)
     driver = webdriver.Chrome()
-    #url = ReadFile().read_excel_not_include_header("UI_auto_test","config/test_environment_address.xlsx")[0][1]
+    url = ReadFile().read_excel_not_include_header("UI_auto_test","config/test_environment_address.xlsx")[0][1]
     #通过正则表达式获取测试的url，去除来的时一个列表
     #url = re.findall('url=(.+?)\n',_url[0])[0]
-    #driver.get(url)
-    driver.get("DOMAIN")
+    driver.get(url)
+    #driver.get("DOMAIN")
     return driver
 
 if __name__ == '__main__':
