@@ -15,7 +15,7 @@ def get_jenkis_parameter(jenkins_url, jenkins_job_name, jenkinss_username, API_t
     jk = jenkins.Jenkins(url=jenkins_url, username=jenkinss_username, password=API_token)
     last_JobNumber = jk.get_job_info(jenkins_job_name)['lastBuild']['number']
     parameters = []
-    jenkins_control_output = jk.get_build_console_output(jenkins_job_name, last_JobNumber+1)
+    jenkins_control_output = jk.get_build_console_output(jenkins_job_name, last_JobNumber)
     for each in jk.get_job_info(jenkins_job_name)['property']:
         if 'ParametersDefinitionProperty' in each['_class']:
             data = each['parameterDefinitions']
