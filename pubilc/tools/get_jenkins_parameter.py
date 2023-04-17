@@ -15,17 +15,15 @@ def get_jenkis_parameter(jenkins_url, jenkins_job_name, jenkinss_username, API_t
     jk = jenkins.Jenkins(url=jenkins_url, username=jenkinss_username, password=API_token)
     last_JobNumber = jk.get_job_info(jenkins_job_name)['lastBuild']['number']
     parameters = []
-    jenkins_control_output = jk.get_build_console_output(jenkins_job_name, last_JobNumber+1)
-    #print(jenkins_control_output)
-
+    jenkins_control_output = jk.get_build_console_output(jenkins_job_name, last_JobNumber)
     for each in jk.get_job_info(jenkins_job_name)['property']:
         if 'ParametersDefinitionProperty' in each['_class']:
             data = each['parameterDefinitions']
             for params in data:
                 temp_dict = {}
-                #temp_dict['name'] = params['defaultParameterValue']['name']
-                print(params['defaultParameterValue']['name'])
-                temp_dict['name'] = re.findall(f'echo {params["defaultParameterValue"]["name"]}=(.+?)\n', jenkins_control_output)[0]
+                #print(params)
+                temp_dict['name'] = params['defaultParameterValue']['name']
+                temp_dict['value'] = re.findall(f'echo {params["defaultParameterValue"]["name"]}=(.+?)\n', jenkins_control_output)[0]
                 temp_dict['description'] = params['description']
                 parameters.append(temp_dict)
     print(parameters)
