@@ -20,7 +20,7 @@ def browser():
     for param in get_jenkis_parameter("http://localhost:8080/","UI_auto_test",'admin','11620ee242fbd91a1d247810ed518f479d'):
         if param['name'] =='environment':
             url = param['value']
-            #print(url)
+            print(url)
             driver.get(url)
     #通过正则表达式获取测试的url，去除来的时一个列表
     #url = re.findall('url=(.+?)\n',_url[0])[0]
