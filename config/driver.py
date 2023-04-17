@@ -17,14 +17,13 @@ def browser():
     # driver = webdriver.Chrome(chrome_options=chrome_options)
     driver = webdriver.Chrome()
     #url = ReadFile().read_excel_not_include_header("UI_auto_test","config/test_environment_address.xlsx")[0][1]
-    for param in get_jenkis_parameter("UI_auto_test"):
-        if param['name'] =='DOMAIN':
+    for param in get_jenkis_parameter("http://localhost:8080/","UI_auto_test",'admin','11620ee242fbd91a1d247810ed518f479d'):
+        if param['name'] =='environment':
             url = param['value']
             #print(url)
             driver.get(url)
     #通过正则表达式获取测试的url，去除来的时一个列表
     #url = re.findall('url=(.+?)\n',_url[0])[0]
-    #driver.get(url)
 
     return driver
 
