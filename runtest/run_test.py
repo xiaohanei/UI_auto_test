@@ -20,16 +20,16 @@ import os
 # 将根目录添加到path中
 
 
-test_dir = get_path("UI_auto_test", "test_case")
-discover = unittest.defaultTestLoader.discover(test_dir, pattern='test*.py')
-report_dir = get_path("UI_auto_test", "reports")
-report_file_name = report_name()
-result = BeautifulReport(discover)
-result.report(filename=report_file_name,description="login test",report_dir=report_dir)
-# cases = add_discover_case()
-# threadNum = 4
-# pool = ThreadPool(threadNum)
-# pool.map(run,get_case_list(cases))
-# pool.close()
-# pool.join()
+# test_dir = get_path("UI_auto_test", "test_case")
+# discover = unittest.defaultTestLoader.discover(test_dir, pattern='test*.py')
+# report_dir = get_path("UI_auto_test", "reports")
+# report_file_name = report_name()
+# result = BeautifulReport(discover)
+# result.report(filename=report_file_name,description="login test",report_dir=report_dir)
+cases = add_discover_case()
+threadNum = 4
+pool = ThreadPool(threadNum)
+pool.map(run,get_case_list(cases))
+pool.close()
+pool.join()
 
