@@ -14,7 +14,8 @@ def now_time():
 
 def report_name():
     now = now_time()
-    report_name = now + " report.html"
+    #report_name = now + " report.html"
+    report_name = "report.html"
     return report_name
 
 
